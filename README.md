@@ -24,13 +24,21 @@ a equipe de TI identificou três problemas:
 ## 2.Primeira Excecução
 
 === CENTRAL DE PEDIDOS ===
+
 Limite simultâneo: 3
+
 Estoque inicial: 10
+
 Pedidos confirmados: [101, 102, 103]
+
 Estoque principal: 7
+
 Réplica antes: 10
+
 Réplica depois: 10
+
 Consulta após falha: REPLICA 10
+
 
 ### Evidência 1 - Primeira Execução
 ![Evidência 1](evidencias/evidencia1.png)
