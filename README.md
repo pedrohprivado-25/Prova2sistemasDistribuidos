@@ -101,6 +101,6 @@ A sincronização deve acontecer depois do processamento dos pedidos, pois prime
 
 **ALUNO:** PEDRO HENRIQUE PRIVADO ALVES
 
-**Repositorio:**[]
+**Repositorio:**[https://github.com/pedrohprivado-25/Prova2sistemasDistribuidos]
 
 **DATA:** 18/11/2026
