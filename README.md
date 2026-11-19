@@ -117,6 +117,7 @@ A sincronização deve acontecer depois do processamento dos pedidos, pois prime
 
 ## 8.Conclusão
 
+Com a realização desta atividade, consegui entender melhor como funciona o processamento de pedidos em um sistema distribuído. Durante as correções, aprendi a controlar a quantidade de tarefas simultâneas, sincronizar os dados entre o servidor principal e a réplica e utilizar a réplica quando o servidor principal apresenta uma falha. Também pude colocar em prática os conteúdos estudados em aula e perceber a importância dessas funções para o funcionamento correto de um sistema.
 
 ## 9.Entrega 
 
