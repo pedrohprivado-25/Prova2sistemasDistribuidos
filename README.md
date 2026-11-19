@@ -34,3 +34,7 @@ o que percebi já de cara e que o estoque e 10 e não esta desconatndo nada na r
 ### Evidência 1 - Primeira Execução
 ![Evidência 1](evidencias/evidencia1.png)
 
+## 3.Probelma A - Concorrência
+
+
+
