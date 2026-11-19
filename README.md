@@ -47,11 +47,11 @@ Consulta após falha: REPLICA 10
 
 Qual Problema Foi Identificado?
 
-o que percebi já de cara e o Limite Simultâneo que e 2 e esta Três.
+O problema identificado foi que o sistema estava permitindo até três processamentos simultâneos, enquanto o limite estabelecido pela empresa era de apenas dois pedidos por vez.
 
 Qual Alteração foi realizada?
 
-então alterei o Codigo  MAXIMO_SIMULTANEO = 3 para MAXIMO_SIMULTANEO = 2 para ficar no limite maximo estabelecido pela empresa 
+Alterei o valor de MAXIMO_SIMULTANEO = 3 para MAXIMO_SIMULTANEO = 2. Essa alteração ajusta o semáforo para permitir que, no máximo, duas threads processem pedidos simultaneamente, respeitando o limite definido pela empresa.
 
 ### Evidência 2 - Concorrência
 ![Evidência 2](evidencias/evidencia2.png)
@@ -60,20 +60,13 @@ então alterei o Codigo  MAXIMO_SIMULTANEO = 3 para MAXIMO_SIMULTANEO = 2 para f
 
 Qual Problema Foi Indentificado?
 
-o estoque e 10 e não esta desconatndo nada na replica, no caso como foi dito não esta atualizando a replica.
+O problema identificado estava na função sincronizar(). A réplica estava recebendo o próprio valor de estoque novamente, ou seja, não estava recebendo as atualizações feitas no servidor principal. Por isso, mesmo depois do processamento dos pedidos, o estoque da réplica continuava com 10 unidades.
 
 Qual alteração foi realizada?
 
-A alteração realizada foi a segunte alterei a linha que estava erada
+Alterei a linha replica["estoque"] = replica["estoque"] para replica["estoque"] = principal["estoque"]. Dessa forma, a réplica passa a receber o estoque atualizado do servidor principal.
 
-def sincronizar():
-    replica["estoque"] = replica["estoque"]
-
-Troquei para 
-
-def sincronizar():
-    replica["estoque"] = principal["estoque"]
-
+Depois do processamento dos três pedidos, o estoque principal passou de 10 para 7 unidades. Após a sincronização, o estoque da réplica também passou de 10 para 7 unidades.
 
 ### Evidência 3 - Sincronização
 ![Evidência 3](evidencias/evidencia3.png)
@@ -83,18 +76,137 @@ def sincronizar():
 
 Qual Problema Foi Indentificado?
 
+O problema identificado estava na função consultar_estoque(). A segunda condição verificava novamente se o servidor principal estava online, em vez de verificar a disponibilidade da réplica. Com isso, quando o servidor principal ficava indisponível, o sistema não conseguia utilizar corretamente a réplica.
+
 Qual alteração foi realizada?
+
+lterei a segunda condição de if principal["online"] para if replica["online"]. Dessa forma, quando o servidor principal fica indisponível, o programa verifica se a réplica está online e utiliza o estoque dela para continuar respondendo às consultas. Essa alteração simula um processo de failover, permitindo que o sistema utilize a réplica quando o servidor principal apresenta uma falha.
 
 ### Evidência 4 - Tolerância a falhas
 ![Evidência 4](evidencias/evidencia4.png)
 
 ## 6.VALIDAÇÃO DO PROGRAMA
 
+import threading
+import time
+
+# Servidores simulados
+principal = {
+    "online": True,
+    "estoque": 10
+}
+
+replica = {
+    "online": True,
+    "estoque": 10
+}
+
+# Controle de concorrência
+MAXIMO_SIMULTANEO = 2
+
+semaforo = threading.Semaphore(
+    MAXIMO_SIMULTANEO
+)
+
+trava = threading.Lock()
+
+pedidos_confirmados = []
 
 
+def processar_pedido(numero):
+    with semaforo:
+        time.sleep(0.1)
+
+        with trava:
+            if principal["estoque"] > 0:
+                principal["estoque"] -= 1
+
+                pedidos_confirmados.append(
+                    numero
+                )
+
+
+def sincronizar():
+    replica["estoque"] = principal["estoque"]
+
+
+def consultar_estoque():
+    if principal["online"]:
+        return (
+            "PRINCIPAL",
+            principal["estoque"]
+        )
+
+    if principal["online"]:
+        return (
+            "REPLICA",
+            replica["estoque"]
+        )
+
+    return "INDISPONIVEL", None
+
+
+print("=== CENTRAL DE PEDIDOS ===")
+
+print(
+    "Limite simultâneo:",
+    MAXIMO_SIMULTANEO
+)
+
+print(
+    "Estoque inicial:",
+    principal["estoque"]
+)
+
+trabalhadores = [
+    threading.Thread(
+        target=processar_pedido,
+        args=(numero,)
+    )
+    for numero in [101, 102, 103]
+]
+
+for trabalhador in trabalhadores:
+    trabalhador.start()
+
+for trabalhador in trabalhadores:
+    trabalhador.join()
+
+print(
+    "Pedidos confirmados:",
+    sorted(pedidos_confirmados)
+)
+
+print(
+    "Estoque principal:",
+    principal["estoque"]
+)
+
+print(
+    "Réplica antes:",
+    replica["estoque"]
+)
+
+sincronizar()
+
+print(
+    "Réplica depois:",
+    replica["estoque"]
+)
+
+# Simulação de falha
+principal["online"] = False
+
+nome, estoque = consultar_estoque()
+
+print(
+    "Consulta após falha:",
+    nome,
+    estoque
+)
 
 ### Evidência 5 - Execução Completa 
-![Evidência 4](evidencias/evidencia4.png)
+![Evidência 5](evidencias/evidencia5.png)
 
 
 
