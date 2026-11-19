@@ -32,4 +32,5 @@ Consulta após falha: REPLICA 10
 o que percebi já de cara e que o estoque e 10 e não esta desconatndo nada na replica no caso como foi dito não esta atualizando a replica.
 
 ### Evidência 1 - Primeira Execução
-![Evidência 1](<img width="458" height="227" alt="Evidencia1" src="https://github.com/user-attachments/assets/3c34ff2e-7de4-4d2f-bddf-31866675f093" />)
+![Evidência 1](evidencias/evidencia1.png)
+
