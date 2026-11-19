@@ -124,6 +124,6 @@ Com a realização desta atividade, consegui entender melhor como funciona o pro
 
 **ALUNO:** PEDRO HENRIQUE PRIVADO ALVES
 
-**Repositorio:**[https://github.com/pedrohprivado-25/Prova2sistemasDistribuidos]
+**REPOSITÓRIO:**[https://github.com/pedrohprivado-25/Prova2sistemasDistribuidos]
 
 **DATA:** 18/11/2026
