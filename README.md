@@ -87,6 +87,7 @@ lterei a segunda condição de if principal["online"] para if replica["online"].
 
 ## 6.VALIDAÇÃO DO PROGRAMA
 
+Após realizar as três correções, executei o programa novamente e os resultados foram apresentados conforme o esperado. O limite de processamento simultâneo passou a ser 2, o estoque principal foi atualizado de 10 para 7 unidades e a réplica recebeu a mesma atualização após a sincronização. Também foi possível verificar que, quando o servidor principal ficou indisponível, o sistema conseguiu utilizar a réplica para consultar o estoque, apresentando o resultado REPLICA 7.
 
 ### Evidência 5 - Execução Completa 
 ![Evidência 5](evidencias/evidencia5.png)
