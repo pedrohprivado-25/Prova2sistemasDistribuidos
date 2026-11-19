@@ -1,1 +1,3 @@
-# Prova2sistemasDistribuidos
+# P2 - SISTEMAS DISTRIBUÍDOS 
+
+**Aluno: PEDRO HENRIQUE PRIVADO ALVES
