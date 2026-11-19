@@ -68,3 +68,39 @@ def sincronizar():
 ![Evidência 3](evidencias/evidencia3.png)
 
 
+## 5.Probelma C - Tolerância a Falhas
+
+Qual Problema Foi Indentificado?
+
+## 7.Análise Técnica
+
+## Questão 1 — Qual é a função do semáforo no processamento dos pedidos?
+
+O semáforo serve para controlar quantas threads podem executar uma tarefa ao mesmo tempo. Nesse programa, ele permite que apenas duas tarefas sejam processadas simultaneamente, evitando que muitas threads acessem a mesma região de execução de uma vez.
+
+## Questão 2 — Por que é necessário sincronizar os dados entre o servidor principal e a réplica?
+
+A sincronização é importante para manter os dois servidores com as mesmas informações. Assim, quando o servidor principal atualiza o estoque após o processamento dos pedidos, a réplica também recebe esses dados, evitando diferenças nas informações armazenadas.
+
+## Questão 3 — O que significa tolerância a falhas e como ela aparece neste programa?
+
+A tolerância a falhas permite que um sistema continue funcionando mesmo quando alguma parte apresenta problemas. No programa, isso acontece quando o servidor principal fica indisponível e a réplica assume o atendimento das consultas, permitindo que o serviço continue funcionando.
+
+## Questão 4 — Para que serve o Lock no programa e como o controle de acesso aos recursos ajuda a prevenir problemas de concorrência?
+
+O Lock serve para controlar o acesso aos dados compartilhados, permitindo que apenas uma thread por vez realize determinada operação. No programa, ele protege as alterações no estoque e na lista de pedidos confirmados, evitando que duas threads modifiquem essas informações ao mesmo tempo e causem erros. Também é importante organizar o acesso aos recursos para evitar problemas como os deadlocks.
+
+## Questão 5 — A sincronização do estoque deve acontecer antes ou depois do processamento dos pedidos? Explique a relação de causalidade.
+
+A sincronização deve acontecer depois do processamento dos pedidos, pois primeiro o servidor principal precisa atualizar o estoque com as novas informações. Depois disso, os dados atualizados são enviados para a réplica. Dessa forma, os dois servidores permanecem com informações corretas e seguem a ordem em que as operações precisam acontecer.
+
+## 8.Conclusão
+
+
+## 9.Entrega 
+
+**ALUNO:** PEDRO HENRIQUE PRIVADO ALVES
+
+**Repositorio:**[]
+
+**DATA:** 18/11/2026
