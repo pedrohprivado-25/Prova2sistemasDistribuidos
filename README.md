@@ -36,7 +36,7 @@ Consulta após falha: REPLICA 10
 
 Qual Problema Foi Identificado?
 
-o que percebi já de cara e o Limite Simultâneo que e 2 e esta Três. o estoque e 10 e não esta desconatndo nada na replica, no caso como foi dito não esta atualizando a replica.
+o que percebi já de cara e o Limite Simultâneo que e 2 e esta Três.
 
 Qual Alteração foi realizada?
 
@@ -45,6 +45,26 @@ então alterei o Codigo  MAXIMO_SIMULTANEO = 3 para MAXIMO_SIMULTANEO = 2 para f
 ### Evidência 2 - Concorrência
 ![Evidência 2](evidencias/evidencia2.png)
 
+## 4.Probelma B - Replicação e Consistência
 
+Qual Problema Foi Indentificado?
+
+o estoque e 10 e não esta desconatndo nada na replica, no caso como foi dito não esta atualizando a replica.
+
+Qual alteração foi realizada?
+
+A alteração realizada foi a segunte alterei a linha que estava erada
+
+def sincronizar():
+    replica["estoque"] = replica["estoque"]
+
+Troquei para 
+
+def sincronizar():
+    replica["estoque"] = principal["estoque"]
+
+
+### Evidência 3 - Sincronização
+![Evidência 3](evidencias/evidencia3.png)
 
 
