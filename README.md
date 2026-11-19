@@ -75,6 +75,21 @@ def sincronizar():
 
 Qual Problema Foi Indentificado?
 
+Qual alteração foi realizada?
+
+### Evidência 4 - Tolerância a falhas
+![Evidência 4](evidencias/evidencia4.png)
+
+## 6.VALIDAÇÃO DO PROGRAMA
+
+
+
+
+### Evidência 5 - Execução Completa 
+![Evidência 4](evidencias/evidencia4.png)
+
+
+
 ## 7.Análise Técnica
 
 ## Questão 1 — Qual é a função do semáforo no processamento dos pedidos?
