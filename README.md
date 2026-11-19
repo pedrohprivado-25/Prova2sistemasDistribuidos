@@ -29,12 +29,22 @@ Réplica antes: 10
 Réplica depois: 10
 Consulta após falha: REPLICA 10
 
-o que percebi já de cara e que o estoque e 10 e não esta desconatndo nada na replica no caso como foi dito não esta atualizando a replica.
-
 ### Evidência 1 - Primeira Execução
 ![Evidência 1](evidencias/evidencia1.png)
 
 ## 3.Probelma A - Concorrência
+
+Qual Problema Foi Identificado?
+
+o que percebi já de cara e o Limite Simultâneo que e 2 e esta Três. o estoque e 10 e não esta desconatndo nada na replica, no caso como foi dito não esta atualizando a replica.
+
+Qual Alteração foi realizada?
+
+então alterei o Codigo  MAXIMO_SIMULTANEO = 3 para MAXIMO_SIMULTANEO = 2 para ficar no limite maximo estabelecido pela empresa 
+
+### Evidência 2 - Concorrência
+![Evidência 2](evidencias/evidencia2.png)
+
 
 
 
