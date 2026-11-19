@@ -1,8 +1,11 @@
 # P2 - SISTEMAS DISTRIBUÍDOS 
 
 **ALUNO:** PEDRO HENRIQUE PRIVADO ALVES
+
 **RA:** 
+
 **PROFESSORA:** Simone Tatiane do Canto 
+
 **DATA:** 18/11/2026
 
 ## 1.Situação-Problema
